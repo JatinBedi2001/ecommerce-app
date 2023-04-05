@@ -1,0 +1,40 @@
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .form-control {
+    border-radius: 3px;
+    width: 400px;
+    margin-left: 40px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 10;
+    right: 53%;
+    top: 23px;
+    color: blue;
+}
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 20px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff;
+  }
+  
