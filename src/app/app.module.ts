@@ -10,9 +10,9 @@ import { HomeGuard } from './guards/home.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { AuthConfig } from '@auth0/auth0-angular';
-import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { AuthConfig, AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CartComponent,
     FilterPipe,
     CheckoutComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,

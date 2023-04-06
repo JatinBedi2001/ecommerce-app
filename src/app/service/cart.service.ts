@@ -5,13 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-
-  public cardItemList:any = [];
+ 
+  public cardItemList: any[] = [];
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
-
+  items: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  totalPrice: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  
   constructor() {
     this.loadCartItems();
+
   }
 
   private loadCartItems() {
@@ -50,6 +53,11 @@ export class CartService {
     this.saveCartItems();
   }
 
+  clearCart() {
+    this.cardItemList = [];
+    this.productList.next([]);
+    this.totalPrice.next(0);
+  }
 
   getTotalPrice(): number {
     let grandTotal = 0;
