@@ -1,32 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
+  public totalItem: number = 0;
+  public searchTerm: string = '';
+  public isLoggedIn: boolean = false;
 
-  public totalItem :number=0;
-  public searchTerm:string='';
-  constructor(private cartService:CartService,public authService: AuthService){}
+  constructor(
+    private cartService: CartService,
+    public auth: AuthService,
+    @Inject(DOCUMENT) public document: Document
+  ) {}
 
   ngOnInit(): void {
-    this.cartService.getProducts()
-    .subscribe(res=>{
-    this.totalItem=res.length;
-    })
-  }
-  search(event:any){
-  this.searchTerm=(event.target as HTMLInputElement).value;
-  this.cartService.search.next(this.searchTerm);
+    this.cartService.getProducts().subscribe((res) => {
+      this.totalItem = res.length;
+    });
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    this.isLoggedIn = isLoggedIn === 'true';
+
+    this.auth.isAuthenticated$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      if (isLoggedIn) {
+        localStorage.setItem('isLoggedIn', 'true');
+      } else {
+        localStorage.setItem('isLoggedIn', 'false');
+      }
+    });
   }
 
-  loginWithRedirect() :void {
-    this.authService.loginWithRedirect();
-  }
-  logout(): void {
-    this.authService.logout();
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    this.cartService.search.next(this.searchTerm);
   }
 }

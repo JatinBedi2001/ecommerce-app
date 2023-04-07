@@ -10,7 +10,7 @@ import { HomeGuard } from './guards/home.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { AuthConfig, AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { AuthModule } from '@auth0/auth0-angular';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
@@ -33,16 +33,13 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
     AuthModule.forRoot({
       domain: 'dev-3n96k9cw.us.auth0.com',
       clientId: '1peUuiHdImQQ0lxohlJRC3qdHCcjnepQ',
-      audience: 'https://dev-3n96k9cw.us.auth0.com/api/v2/',
-      redirectUri: `${window.origin}`,
-    } as AuthConfig),
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      },
+      cacheLocation:"localstorage",
+    }),
   ],
-  providers: [HomeGuard,
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthHttpInterceptor,
-    multi: true,
-  },],
+  providers: [HomeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

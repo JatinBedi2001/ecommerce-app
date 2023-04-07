@@ -6,11 +6,12 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { HomeGuard } from './guards/home.guard';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   { path: '', canActivate: [HomeGuard], component: HomeComponent }, 
-  { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'products', component: ProductsComponent,canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent,canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'thank-you', component:ThankYouComponent }
 ];

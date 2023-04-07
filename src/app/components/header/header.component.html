@@ -3,7 +3,6 @@
   <div class="form-group">   
     <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Search products" style="width: 250px;" >
   </div>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,12 +20,17 @@
           <div style="font-size:10px;" class="badge bg-danger">{{totalItem}}</div>
         </a>
       </li>
-      <li *ngIf="!(authService.isAuthenticated$ | async)" class="nav-item">
-        <a class="nav-link" (click)="authService.loginWithRedirect()">Login</a>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+          Log out
+        </a>
+      </li> 
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" (click)="auth.loginWithRedirect()">Log in</a>
       </li>
-      <li *ngIf="(authService.isAuthenticated$ | async)" class="nav-item">
-        <a class="nav-link" (click)="authService.logout()">Logout</a>
-      </li>     
     </ul>
   </div>
 </nav>
+
+
+
