@@ -10,9 +10,9 @@ import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   { path: '', canActivate: [HomeGuard], component: HomeComponent }, 
-  { path: 'products', component: ProductsComponent,canActivate: [AuthGuard] },
+  { path: 'products', component: ProductsComponent },
   { path: 'cart', component: CartComponent,canActivate: [AuthGuard] },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent ,canActivate: [AuthGuard]},
   { path: 'thank-you', component:ThankYouComponent }
 ];
 

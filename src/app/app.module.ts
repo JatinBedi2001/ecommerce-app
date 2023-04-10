@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,10 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
     HttpClientModule,
     FormsModule,
     AuthModule.forRoot({
-      domain: 'dev-3n96k9cw.us.auth0.com',
-      clientId: '1peUuiHdImQQ0lxohlJRC3qdHCcjnepQ',
+      domain: environment.auth0.domain,
+      clientId: environment.auth0.clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: environment.auth0.redirectUri
       },
       cacheLocation:"localstorage",
     }),
