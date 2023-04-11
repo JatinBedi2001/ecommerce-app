@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { environment } from '../environments/environment';
     FilterPipe,
     CheckoutComponent,
     ThankYouComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

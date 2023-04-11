@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ApiService } from "src/app/service/api.service";
 import { CartService } from "src/app/service/cart.service";
+import { WishlistService } from "src/app/service/wishlist.service";
 import { Observable, Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -24,7 +25,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   searchKey: string = "";
   cartSubscription!: Subscription;
 
-  constructor(private api: ApiService, private cartService: CartService) {}
+  constructor(private api: ApiService, private cartService: CartService, private wishlistService: WishlistService) {}
 
   ngOnInit(): void {
     this.productList$ = this.api.getProduct().pipe(
@@ -44,6 +45,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   addtocart(item: any) {
     this.cartService.addtoCart(item);
+  }
+
+  addToWishlist(item: any) {
+    this.wishlistService.addToWishlist(item);
   }
 
   ngOnDestroy(): void {
