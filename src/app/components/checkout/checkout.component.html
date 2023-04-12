@@ -29,7 +29,9 @@
               <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="shippingInfo.zipCode" required>
             </div>
           </div>
-          <button type="submit" class="btn btn-outline-success" [disabled]="!shippingForm.form.valid || grandTotal == 0" (click)="makePayment()">Pay {{ grandTotal | currency:'USD' }}</button>
+
+      <button type="submit" class="btn btn-outline-success" [disabled]="!shippingForm.form.valid || grandTotal == 0 || paymentMade" (click)="makePayment()">Pay {{ grandTotal | currency:'USD' }}</button>
+
         </form>
       </div>
       

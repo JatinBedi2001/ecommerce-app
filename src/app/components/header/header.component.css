@@ -1,5 +1,5 @@
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(10, 9, 9, 0.1);
   }
 
 .form-control {
@@ -8,13 +8,6 @@
     margin-left: 0px;
 }
 
-.search-icon {
-    position: absolute;
-    z-index: 10;
-    right: 53%;
-    top: 23px;
-    color: blue;
-}
   .navbar-brand {
     font-size: 24px;
     font-weight: 600;
@@ -32,6 +25,7 @@
     color: #333;
     font-size: 18px;
     font-weight: 600;
+    cursor: pointer;
   }
   
   .navbar-nav .nav-link:hover {

@@ -38,7 +38,17 @@ h6 {
 
 table th,
 table td {
-  padding-right: 20px;
+  padding-right: 30px;
 }
+
+.input-group {
+    width: 100px;
+ }
+
+ .btns {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  
 
 

@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row mx-auto justify-content-center">
+  <div class="row mx-auto justify-content-center justify-content-sm-start">
       <ng-container *ngIf="productList$ | async as productList ">
         <div class="card col-sm-6 col-md-4 col-lg-3" *ngFor="let item of productList | filter:searchKey:'title'">
             <img src="{{item.image}}" alt="">
@@ -7,7 +7,7 @@
             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
             <p><strong>Price:</strong> ${{item.price}}</p>
             <div class="d-flex justify-content-between align-items-center">
-              <button class="btn btn-primary mr-4" (click)="addtocart(item)">Add to cart</button>
+              <button class="btn btn-primary mr-4" (click)="addtocart(item)" [disabled]="isDisabled(item)">Add to cart</button>
               <button class="btn btn-outline-danger" (click)="addToWishlist(item)"><i class="fa fa-heart"></i></button>
             </div>
           </div>

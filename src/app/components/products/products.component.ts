@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   productList$: Observable<Product[]> | undefined;
   searchKey: string = "";
   cartSubscription!: Subscription;
+  disabledItems: number[] = [];
 
   constructor(private api: ApiService, private cartService: CartService, private wishlistService: WishlistService) {}
 
@@ -45,6 +46,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   addtocart(item: any) {
     this.cartService.addtoCart(item);
+    this.disabledItems.push(item.id);
+  }
+
+  isDisabled(item: any) {
+    return this.disabledItems.includes(item.id);
   }
 
   addToWishlist(item: any) {

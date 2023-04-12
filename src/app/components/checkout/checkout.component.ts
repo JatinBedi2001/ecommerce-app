@@ -13,6 +13,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   grandTotal: number = 0;
   public products: any[] = [];
   paymentHandler: any = null;
+  paymentMade = false;
   private cartSubscription!: Subscription;
 
   constructor(private cartService: CartService, private router: Router) { }
@@ -30,6 +31,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   makePayment() {
     const self = this;
     const amount = this.grandTotal;
+    this.paymentMade = true;
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key:
         'pk_test_51MtmVTSJY5C7wp7CDXLbDPAKHk64PcBFzKdEEHnwVgHdwZWIELOwVOlimHg99M1mrjEwMOBJb0INnPy0mAJmlKsX00mTHUXjz4',
@@ -37,7 +39,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken.card);
-        alert('Payment operated!');
         self.router.navigate(['/thank-you']);
         self.cartService.clearCart();
         setTimeout(() => {

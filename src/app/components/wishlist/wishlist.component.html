@@ -1,11 +1,11 @@
-<ng-container *ngIf="wishlistItems.length !=0">
-    <div class="container">
+<ng-container *ngIf="wishlistItems.length != 0">
+  <div class="container">
+    <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
             <th>Image</th>
             <th>Title</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Action</th>
           </tr>
@@ -14,9 +14,8 @@
           <tr *ngFor="let item of wishlistItems">
             <td><img style="max-width: 120px; height: auto;" src="{{item.image}}" alt=""></td>
             <td>{{ item.title }}</td>
-            <td>{{ item.description }}</td>
             <td>{{ item.price }}</td>
-            <td >
+            <td>
               <button class="btn btn-outline-success btn-sm" (click)="addToCart(item)"><i class="fa fa-shopping-cart"></i></button>
               <button class="btn btn-outline-danger btn-sm" (click)="removeWishlistItem(item)"><i class="fas fa-trash-alt"></i></button>
             </td>
@@ -24,15 +23,15 @@
         </tbody>
       </table>
     </div>
-  </ng-container>
-  
-  <ng-container *ngIf="wishlistItems.length ==0">
-    <div class="container">
-      <div class="center">
-        <h4>Your wishlist is empty!</h4>
-        <h6>Shop our exclusive products now 💌</h6>
-        <button routerLink="/products" class="btn btn-primary">Shop Now</button>
-      </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="wishlistItems.length == 0">
+  <div class="container">
+    <div class="center">
+      <h4>Your wishlist is empty!</h4>
+      <h6>Shop our exclusive products now 💌</h6>
+      <button routerLink="/products" class="btn btn-primary">Shop Now</button>
     </div>
-  </ng-container>
-  
+  </div>
+</ng-container>
