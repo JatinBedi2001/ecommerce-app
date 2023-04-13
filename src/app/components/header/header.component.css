@@ -1,5 +1,7 @@
 .navbar {
     box-shadow: 0 2px 4px rgba(10, 9, 9, 0.1);
+    position: relative;
+    z-index: 9999;
   }
 
 .form-control {
