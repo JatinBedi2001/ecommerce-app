@@ -2,7 +2,9 @@
   <div class="row mx-auto justify-content-center justify-content-sm-start">
       <ng-container *ngIf="productList$ | async as productList ">
         <div class="card col-sm-6 col-md-4 col-lg-3" *ngFor="let item of productList | filter:searchKey:'title'">
-            <img src="{{item.image}}" alt="">
+           <div class="text-center">
+          <img src="{{item.image}}" alt="">
+         </div>
             <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
             <p><strong>Price:</strong> ${{item.price}}</p>
